@@ -9,12 +9,15 @@ export const createProduct = ({
   description,
   price,
   currency
-}) => http(entity).save({
-  name,
-  description,
-  price,
-  currency
-})
+}) => {
+  const body = {
+    name,
+    description,
+    price,
+    currency
+  }
+  return http(entity).save([body]).then(extractBody)
+}
 
 export const updateProduct = ({
   id,
@@ -27,7 +30,13 @@ export const updateProduct = ({
   description,
   price,
   currency
-})
+}).then(() => ({
+  id,
+  name,
+  description,
+  price,
+  currency
+}))
 
 export const getProducts = () => http(entity).getAll().then(extractBody)
 
