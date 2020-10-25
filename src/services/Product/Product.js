@@ -46,22 +46,7 @@ export const searchBetweenDateTime = (from, to) => http(entity).searchDate(from,
 
 const extractBody = (response) => {
   const { data } = response
-  const {
-    id,
-    name,
-    description,
-    price,
-    currency
-  } = data
-  return {
-    id,
-    name,
-    description,
-    price: castToFloat(price),
-    currency
-  }
+  return data
 }
 
 const castToInteger = (price) => parseInt(parseFloat(price) * 100)
-
-const castToFloat = (price) => price * 100
