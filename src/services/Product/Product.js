@@ -40,7 +40,9 @@ export const updateProduct = ({
 
 export const getProducts = () => http(entity).getAll().then(extractBody)
 
-export const deleteProduct = (productId) => http(entity).delete(productId)
+export const deleteProduct = (productId) => http(entity).remove(productId)
+
+export const searchBetweenDateTime = (from, to) => http(entity).searchDate(from, to).then(extractBody)
 
 const extractBody = (response) => {
   const { data } = response

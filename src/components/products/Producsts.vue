@@ -4,6 +4,7 @@
       <v-col v-for="(product, index) in products" :key="product.id" sm="12" xl="4" md="4">
         <Product
           v-model="products[index]"
+          @delete="(product) => $emit('delete', product)"
         />
       </v-col>
     </v-row>
