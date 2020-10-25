@@ -13,7 +13,7 @@ export const createProduct = ({
   const body = {
     name,
     description,
-    price,
+    price: castToInteger(price),
     currency
   }
   return http(entity).save([body]).then(extractBody)
@@ -28,7 +28,7 @@ export const updateProduct = ({
 }) => http(entity).update(id, {
   name,
   description,
-  price,
+  price: castToInteger(price),
   currency
 }).then(() => ({
   id,
@@ -46,5 +46,22 @@ export const searchBetweenDateTime = (from, to) => http(entity).searchDate(from,
 
 const extractBody = (response) => {
   const { data } = response
-  return data
+  const {
+    id,
+    name,
+    description,
+    price,
+    currency
+  } = data
+  return {
+    id,
+    name,
+    description,
+    price: castToFloat(price),
+    currency
+  }
 }
+
+const castToInteger = (price) => parseInt(parseFloat(price) * 100)
+
+const castToFloat = (price) => price * 100
