@@ -1,5 +1,5 @@
 import axios from 'axios'
-const basurl = 'http://161.35.110.11/api'
+const basurl = 'https://api.godoy.dev/api'
 
 const client = axios.create({
   baseURL: basurl,
