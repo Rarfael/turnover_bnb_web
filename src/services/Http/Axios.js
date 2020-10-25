@@ -1,5 +1,5 @@
 import axios from 'axios'
-const basurl = 'http://127.0.0.1:8000/api'
+const basurl = 'http://161.35.110.11/api'
 
 const client = axios.create({
   baseURL: basurl,
